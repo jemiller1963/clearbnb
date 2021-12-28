@@ -1,0 +1,41 @@
+<h1>List your property</h1>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p>
+      <%= error %>
+    </p>
+  <% end %>
+
+<% end %>
+
+
+<form action="/host/listings" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="title">Title<br>
+    <input type="text" name="listing[title]" id="title" value="<%= @listing.title %>">
+  </label><br>
+  <label for="about">About</label><br>
+  <input type="text" name="listing[about]" id="about" value="<%= @listing.about %>">
+  </label><br>
+  <label for="max_guests">Maximum guest<br>
+    <input type="number" name="listing[max_guests]" id="max_guests" value="<%= @listing.max_guests %>" min="1" max="100" steps="1">
+  </label><br>
+  <div data-controller="address" data-action="map-loaded@window->address#initGoogle">
+    <label for="address">Address<br> </label>
+      <input type="text" id="address" data-address-target="input" autocomplete="off">
+     <input type="hidden" name="listing[address_line1]" data-address-target="line1"> 
+     <input type="hidden" name="listing[address_line2]" data-address-target="line2"> 
+     <input type="hidden" name="listing[city]" data-address-target="city">
+     <input type="hidden" name="listing[state]" data-address-target="state">
+     <input type="hidden" name="listing[postal_code]" data-address-target="postal_code">
+     <input type="hidden" name="listing[country]" data-address-target="country">
+     <input type="hidden" name="listing[lat]" data-address-target="lat">
+     <input type="hidden" name="listing[lng]" data-address-target="lng">
+  </div>
+  </div>
+  <br>
+  <p>
+    <input type="submit" value="Submit">
+  </p>
+</form>

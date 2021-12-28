@@ -1,0 +1,20 @@
+<h1>Edit <%= @listing.title %></h1>
+
+<%= render partial: 'shared/errors' %>
+
+<form action="/host/listings" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" id="PUT"/>
+  <label for="title">Title<br>
+    <input type="text" name="listing[title]" id="title" value="<%= @listing.title %>">
+  </label><br>
+  <label for="about">About</label><br>
+    <input type="text" name="listing[about]" id="about" value="<%= @listing.about %>">
+    </label><br>
+  <label for="max_guests">Maximum guest<br>
+    <input type="number" name="listing[max_guests]" id="max_guests" value="<%= @listing.max_guests %>" min="1" max="100" steps="1">
+  </label><br>
+  <p>
+    <input type="submit" value="Update">
+  </p>
+</form>
