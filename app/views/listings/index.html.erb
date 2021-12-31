@@ -1,0 +1,15 @@
+<h1>Listings</h1>
+
+<ul>
+
+  <% if @listings.any? %>
+    <% @listings.each do |listing| %>
+      <li>
+        <%= link_to listing.title, listing_path(listing) %>
+      </li>
+    <% end %>
+  <% else %>
+    <li>There are currently no listings available</li>
+  <% end %>
+
+</ul>

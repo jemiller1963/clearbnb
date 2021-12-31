@@ -30,7 +30,7 @@ class Host::ListingsController < ApplicationController
   def update
     @listing = current_user.listing.find(params[:id])
     if @listing.update(listing_update_params)
-      redirect_to @listing
+      redirect_to host_listing_path(@listing)
     else
       flash.now[:errors] = @listing.errors.full_messages
       render :edit
@@ -66,7 +66,8 @@ class Host::ListingsController < ApplicationController
     params.require(:listing).permit(
       :title,
       :about,
-      :max_guests
+      :max_guests,
+      :status,
     )
   end
 end

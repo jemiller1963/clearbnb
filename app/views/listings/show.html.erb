@@ -1,0 +1,23 @@
+<span class="text-sm italic text-gray-300 -pt-10">
+  <%= @listing.host.name %>
+</span>
+<h1>Listings for <%= @listing.title %> </h1>
+<div class="relative w-1/4 mt-10 overflow-hidden text-white shadow-lg rounded-xl">
+  <div class="w-auto p-10 bg-gradient-to-br from-purple-500 to-indigo-500">
+    <p>
+      <strong>Title:</strong> <%= @listing.title %>
+    </p>
+
+    <p>
+      <strong>About:</strong> <%= @listing.about %>
+    </p>
+
+    <p>
+      <strong>Max guests allowed:</strong> <%= @listing.max_guests %>
+    </p>
+
+    <p>
+      <strong>Location:</strong> <%= address(@listing) %>
+    </p>
+  </div>
+</div>

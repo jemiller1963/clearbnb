@@ -14,14 +14,16 @@
   </head>
 
   <body>
-    <main class="container px-5 mx-auto mt-28">
+    <main class="container px-5 mx-auto mt-10">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <% if user_signed_in? %>
-        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300" %>
-      <% else %>
-        <%= button_to "Sign In", new_user_session_path,  class: "p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300"%>
-      <% end %>
+      <div class="mb-10">
+        <% if user_signed_in? %>
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-tertiary" %>
+        <% else %>
+          <%= button_to "Sign In", new_user_session_path,  class: "btn btn-tertiary"%>
+        <% end %>
+      </div>
       <%= yield %>
     </main>
   </body>
