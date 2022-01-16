@@ -1,0 +1,19 @@
+<h1>Photos</h1>
+
+<%= form_with scope: :photo, url: host_listing_photos_path(@listing) do |f| %>
+  <%= f.file_field :image %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %> 
+  <%= f.submit %>
+<% end %>
+
+<hr>
+
+<div class="photo_lists">
+  <% @photo.each do |photo| %>
+    <div class="m-5">
+      <%= image_tag photo.image_url if photo.image %>
+      <%= photo.caption %>
+    </div>
+  <% end %>
+</div>

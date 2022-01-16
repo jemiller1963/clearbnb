@@ -5,7 +5,7 @@ ruby '2.7.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 # gem 'rails', '~> 6.1.4.4'
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 7.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -31,7 +31,9 @@ gem 'omniauth-rails_csrf_protection'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
+gem "shrine", "~> 3.4"
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -41,6 +43,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails', '~> 0.3.9'
   gem 'letter_opener'
+  gem 'faker'  
 end
 
 group :development do

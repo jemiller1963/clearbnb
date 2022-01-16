@@ -2,6 +2,28 @@
 
 <%= link_to "Edit Details", edit_host_listing_path(@listing) %>
 <%= link_to "Edit Rooms", host_listing_rooms_path(@listing) %>
+<%= link_to "Edit Photos", host_listing_photos_path(@listing) %>
 <pre>
 <%= JSON.pretty_generate(@listing.as_json) %>
 </pre>
+
+
+<div class="my-2 border-t-2">
+
+  <p>
+    <%= @listing.title %>
+  </p>
+  <p>
+    <%= @listing.about %>
+  </p>
+  <p>
+    <%= @listing.max_guests %>
+  </p>
+  <div class="photo_lists">
+    <% if @listing.photos.exists? %>
+      <% @listing.photos.each do |photo| %>
+        <%= image_tag photo.image_url %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

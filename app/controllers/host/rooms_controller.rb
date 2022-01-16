@@ -2,12 +2,12 @@ class Host::RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @listing = current_user.listing.find(params[:listing_id])
+    @listing = current_user.listings.find(params[:listing_id])
     @rooms = @listing.rooms.all
   end
 
   def create
-    @listing = current_user.listing.find(params[:listing_id])
+    @listing = current_user.listings.find(params[:listing_id])
     @room = @listing.rooms.new(room_params)
     if !@room.save
       flash[:errors] = @room.errors.full_messages
@@ -16,7 +16,7 @@ class Host::RoomsController < ApplicationController
   end
 
   def destroy
-    @listing = current_user.listing.find(params[:listing_id])
+    @listing = current_user.listings.find(params[:listing_id])
     @room = @listing.rooms.find(params[:id])
 
     @room.destroy

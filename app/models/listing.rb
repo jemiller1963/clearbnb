@@ -24,6 +24,7 @@ class Listing < ApplicationRecord
   validates :max_guests, numericality: { greater_than: 0, less_than_or_equel_to: 100 }
   belongs_to :host, class_name: 'User'
   has_many :rooms
+  has_many :photos
 
   enum status: { draft: 0, published: 1, archived: 2 }
 

@@ -34,7 +34,7 @@ class User < ApplicationRecord
     :confirmable, :lockable, :timeoutable, :trackable,
     :omniauthable, omniauth_providers: [:google]
 
-  has_many :listing, foreign_key: :host_id
+  has_many :listings, foreign_key: :host_id
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_29_223447) do
+ActiveRecord::Schema.define(version: 2022_01_13_231528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 2021_12_29_223447) do
     t.index ["host_id"], name: "index_listings_on_host_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.bigint "listing_id", null: false
+    t.string "caption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "image_data"
+    t.index ["listing_id"], name: "index_photos_on_listing_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.bigint "listing_id", null: false
     t.integer "room_type"
@@ -84,20 +93,20 @@ ActiveRecord::Schema.define(version: 2021_12_29_223447) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: 6
+    t.datetime "last_sign_in_at", precision: 6
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at", precision: 6
+    t.datetime "confirmation_sent_at", precision: 6
     t.string "unconfirmed_email"
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
-    t.datetime "locked_at"
+    t.datetime "locked_at", precision: 6
     t.string "provider"
     t.string "uid"
     t.string "name"
@@ -113,5 +122,6 @@ ActiveRecord::Schema.define(version: 2021_12_29_223447) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "beds", "rooms"
   add_foreign_key "listings", "users", column: "host_id"
+  add_foreign_key "photos", "listings"
   add_foreign_key "rooms", "listings"
 end

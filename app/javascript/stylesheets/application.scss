@@ -60,5 +60,9 @@
     @apply text-gray-600 border border-gray-600 bg-transparent hover:bg-gray-600 hover:text-white;
   }
 
-
+  .photo_lists {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 3fr));
+  }
 }
