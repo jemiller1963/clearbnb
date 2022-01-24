@@ -1,22 +1,24 @@
 # == Schema Information
 #
-# Table name: photos
+# Table name: reservations
 #
 #  id         :integer          not null, primary key
 #  listing_id :integer          not null
-#  caption    :string
+#  guest_id   :integer          not null
+#  session_id :string
+#  status     :integer          default("0")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  image_data :text
 #
 # Indexes
 #
-#  index_photos_on_listing_id  (listing_id)
+#  index_reservations_on_guest_id    (guest_id)
+#  index_reservations_on_listing_id  (listing_id)
 #
 
 require "test_helper"
 
-class PhotoTest < ActiveSupport::TestCase
+class ReservationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

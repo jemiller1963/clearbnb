@@ -1,5 +1,5 @@
 <span class="text-sm italic text-gray-300 -pt-10">
-  <%= @listing.host.name %>
+  <%= mail_to @listing.host.email, @listing.host.name %>
 </span>
 <h1>Listings for <%= @listing.title %> </h1>
 <div class="flex justify-center">
@@ -7,6 +7,20 @@
     <div class="w-auto p-10 bg-yellow-100">
       <p>
         <strong>Title:</strong> <%= @listing.title %>
+      </p>
+      <p>
+        <%= form_with url: reservations_path do |form| %>
+          <input type="hidden" name="reservation[listing_id]" value="<%= @listing.id %>">
+          <%#= form.hidden_field "reservation[listing_id]", value: @listing_id %>
+          <%= form.submit "Reserve 2" %>
+        <% end %>
+      </p>
+      <p>
+        <strong>Price per night:</strong><%= number_to_currency( @listing.nightly_price / 100, precision: 0 ) %>
+      </p>
+
+      <p>
+        <strong>Cleaning fees:</strong><%= number_to_currency( @listing.cleaning_fee/100, precision: 0 ) %>
       </p>
 
       <p>

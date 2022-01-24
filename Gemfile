@@ -33,7 +33,7 @@ gem 'omniauth-rails_csrf_protection'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 gem "shrine", "~> 3.4"
-
+gem 'stripe'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
