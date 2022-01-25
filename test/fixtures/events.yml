@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id            :integer          not null, primary key
+#  request_body  :text
+#  status        :integer          default("0")
+#  error_message :text
+#  source        :string
+#  event_type    :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  request_body: MyText
+  status: 1
+  error_message: MyText
+  source: MyString
+  event_type: MyString
+
+two:
+  request_body: MyText
+  status: 1
+  error_message: MyText
+  source: MyString
+  event_type: MyString
