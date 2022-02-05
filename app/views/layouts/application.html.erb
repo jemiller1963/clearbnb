@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google[:maps] %>&libraries=places&callback=initMap" async defer data-turbolinks-eval="false">
-      </script>
+    </script>
 
   </head>
 
@@ -18,12 +18,16 @@
     <main class="container px-5 mx-auto mt-10">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <div class="mb-10">
+      <div class="flex items-baseline mb-10 space-x-4">
         <% if user_signed_in? %>
           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-tertiary" %>
         <% else %>
           <%= button_to "Sign In", new_user_session_path,  class: "btn btn-tertiary"%>
         <% end %>
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="/listings" class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md" aria-current="page">Listings</a>
+
+        <a href="/reservations" class="px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">Reservations</a>
       </div>
       <%= yield %>
     </main>

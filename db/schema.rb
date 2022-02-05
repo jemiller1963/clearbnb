@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_001137) do
+ActiveRecord::Schema.define(version: 2022_02_05_230020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 2022_01_25_001137) do
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_payment_intent_id"
+    t.string "stripe_refund_id"
     t.index ["guest_id"], name: "index_reservations_on_guest_id"
     t.index ["listing_id"], name: "index_reservations_on_listing_id"
   end

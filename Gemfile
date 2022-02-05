@@ -26,7 +26,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -38,7 +38,8 @@ gem "shrine", "~> 3.4"
 gem 'stripe'
 
 # Background Jobs
-gem 'resque', '~> 1.26'
+# gem 'resque', '~> 1.26'
+gem 'sidekiq'
 
 
 # Reduces boot times through caching; required in config/boot.rb

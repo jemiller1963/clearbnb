@@ -4,7 +4,19 @@ class ReservationsController < ApplicationController
   def index
   end
 
+  def cancel
+    @reservation = current_user.reservations.find(params[:id])
+    refund = Stripe::Refund.create({
+      payment_intent: @reservation.stripe_payment_intent_id,
+    })
+    @reservation.update(
+      status: :canceling, stripe_refund_id: refund.id
+    )
+    redirect_to reservation_path(@reservation)
+  end
+
   def show
+    @reservation = current_user.reservations.find(params[:id])
   end
 
   def create
@@ -41,8 +53,8 @@ class ReservationsController < ApplicationController
             reservation_id: @reservation.id,
           }
         })
-        @reservation.update(session_id: checkout_session.id)
-        redirect_to checkout_session.url
+      @reservation.update(session_id: checkout_session.id)
+      redirect_to checkout_session.url
     else
       flash.now[:errors] = @reservation.errors.full_messages
       redirect_to listing_path(params[:reservation][:listing_id])
