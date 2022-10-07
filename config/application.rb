@@ -10,6 +10,7 @@ module Clearbnb
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.hosts = nil
 
     Rails.application.default_url_options = { host: 'localhost', port: 5000 }
     config.active_job.queue_adapter = :sidekiq

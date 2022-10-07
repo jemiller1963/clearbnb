@@ -1,0 +1,15 @@
+<h1>
+  Merchant Settings
+</h1>
+<% if current_user.stripe_account_id.blank? %> 
+  <p>You are not connected to your Stripe Account yet</p>
+  <p><a href="/host/merchant_settings/connect">Connect to your Stripe Account</a></p>
+<% else %>
+  <p>
+    Stripe Account: <%= current_user.stripe_account_id %>
+  </p>
+
+  <p>
+    Charges enabled: <%= current_user.charges_enabled? ? 'Yes' : 'No' %>
+  </p>
+<% end %>

@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   post 'webhooks/:source' => 'webhooks#create'
 
   namespace :host do
+    resources :merchant_settings do
+      collection do
+        get '/connect' => 'merchant_settings#connect'
+        get '/connected' => 'merchant_settings#connected'
+      end
+    end
     resources :listings do 
       resources :photos, only: [ :index, :new, :create, :destroy ]
       resources :rooms, only: [:index, :create, :destroy]

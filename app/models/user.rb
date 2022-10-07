@@ -26,6 +26,9 @@
 #  uid                    :string
 #  name                   :string
 #  stripe_customer_id     :string
+#  is_host                :boolean          default("false")
+#  stripe_account_id      :string
+#  charges_enabled        :boolean          default("false")
 #
 # Indexes
 #
